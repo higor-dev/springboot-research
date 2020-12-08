@@ -1,5 +1,6 @@
 package com.springboot.springbootwork;
 
+import com.springboot.springbootwork.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

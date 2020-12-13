@@ -45,6 +45,7 @@ public class TestConfig implements CommandLineRunner {
 
         Product p1 = new Product(null, "The Lord of Rings", "lOREM IPSUM", 90.5, "");
 
+        p1.getCategories().add(cat2);
 
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));

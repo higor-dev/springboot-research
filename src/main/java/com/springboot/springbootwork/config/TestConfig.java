@@ -1,9 +1,9 @@
 package com.springboot.springbootwork.config;
 
-import com.springboot.springbootwork.entities.Order;
-import com.springboot.springbootwork.entities.OrderStatus;
-import com.springboot.springbootwork.entities.User;
+import com.springboot.springbootwork.entities.*;
+import com.springboot.springbootwork.repositories.CategoryRepository;
 import com.springboot.springbootwork.repositories.OrderRepository;
+import com.springboot.springbootwork.repositories.ProductRepository;
 import com.springboot.springbootwork.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,6 +23,11 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -34,7 +39,16 @@ public class TestConfig implements CommandLineRunner {
         Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, u2);
         Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1);
 
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+
+        Product p1 = new Product(null, "The Lord of Rings", "lOREM IPSUM", 90.5, "");
+
+
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+        productRepository.saveAll(Arrays.asList(p1));
     }
 }
